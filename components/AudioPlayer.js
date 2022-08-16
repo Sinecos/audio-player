@@ -10,11 +10,13 @@ const AudioPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
+  const [playspeedTime, setPlaySpeed] = useState(1);
 
   //references
   const audioPlayer = useRef(); // reference our audio component
   const progressBar = useRef(); // reference our progress bar
   const animationRef = useRef(); // reference the animation
+  const playbackSpeedBar = useRef(); // reference our playbackSpeed progress bar
 
   useEffect(() => {
     const seconds = Math.floor(audioPlayer.current.duration);
@@ -34,7 +36,6 @@ const AudioPlayer = () => {
     const prevValue = isPlaying;
     setIsPlaying(!prevValue);
     if (!prevValue) {
-      audioPlayer.current.playbackRate = 3.5;
       audioPlayer.current.play();
       animationRef.current = requestAnimationFrame(whilePlaying);
     } else {
@@ -52,6 +53,13 @@ const AudioPlayer = () => {
   const changeRange = () => {
     audioPlayer.current.currentTime = progressBar.current.value;
     changePlayerCurrentTime();
+  };
+
+  const changePlayspeedRange = () => {
+    setPlaySpeed(playbackSpeedBar.current.value / 50);
+    audioPlayer.current.playbackRate = Number(
+      playbackSpeedBar.current.value / 50
+    );
   };
 
   const changePlayerCurrentTime = () => {
@@ -107,10 +115,13 @@ const AudioPlayer = () => {
       <div>
         <input
           type="range"
+          step="0.01"
           className={styles.playbackSpeedBar}
           defaultValue="50"
-        />{" "}
-        1x
+          ref={playbackSpeedBar}
+          onChange={changePlayspeedRange}
+        />
+        {Math.round(playspeedTime * 100) / 100}x
       </div>
       <div className={styles.playbackSpeedText}>playback speed</div>
     </div>
