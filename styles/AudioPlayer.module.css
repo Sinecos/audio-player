@@ -7,6 +7,21 @@
   width: 700px;
 }
 
+.playbackSpeedBar {
+  appearance: none;
+  border-radius: 10px;
+  position: relative;
+  width: 10%;
+  height: 11px;
+  outline: none;
+  cursor: pointer;
+}
+.playbackSpeedText {
+  font-family: monospace;
+  font-size: 16px;
+  align-items: right;
+}
+
 .forwardBackward {
   background: none;
   color: black;
@@ -52,7 +67,7 @@
 
 .progressBar {
   --bar-bg: #ffe3d4;
-  --seek-before-width: 100px;
+  --seek-before-width: 0;
   --seek-before-color: #ffc2a1;
   --knobby: #3452a5;
   --selectedKnobby: #26c9c3;
