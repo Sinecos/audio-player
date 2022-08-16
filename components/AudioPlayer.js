@@ -31,7 +31,7 @@ const AudioPlayer = () => {
       {/* Current time */}
       <div className={styles.currentTime}>0:00</div>
       {/* Progress bar */}
-      <input type="range" />
+      <input type="range" className={styles.progressBar} />
       {/* Duration time */}
       <div className={styles.duration}>2:49</div>
     </div>
