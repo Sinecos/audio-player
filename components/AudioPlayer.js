@@ -122,6 +122,7 @@ const AudioPlayer = () => {
           onChange={changePlayspeedRange}
         />
         {Math.round(playspeedTime * 100) / 100}x
+        <button className={styles.saveButton}>Save</button>
       </div>
       <div className={styles.playbackSpeedText}>playback speed</div>
     </div>

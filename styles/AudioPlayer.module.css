@@ -7,6 +7,28 @@
   width: 700px;
 }
 
+.saveButton {
+  background: var(--bar-bg);
+  color: black;
+  font-family: monospace;
+  font-size: 16px;
+  font-weight: bold;
+  display: inline-block;
+  transition-duration: 0.01s;
+}
+
+.saveButton:hover {
+  background-color: #f40082; /* Green */
+  color: white;
+}
+
+.saveButton:active {
+  background-color: #fc8cc8;
+  color: #fff;
+  box-shadow: 0 1px #666;
+  transform: translateY(2px);
+}
+
 .playbackSpeedBar {
   appearance: none;
   border-radius: 10px;
